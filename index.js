@@ -43,12 +43,16 @@ macDisplay.prototype.getSwitchOnCharacteristic = function(next) {
 macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
   this.log('Setting mac display: ' + (on ? 'on' : 'off'));
 
+  exec("pmset -g", (err, stdout, stderr) => {
+    console.log(stdout)
+  })
+
   // Check current status
   exec("pmset -g | grep \" sleep \" | awk '{print $2}'", (err, stdout, stderr) => {
     console.log(parseInt(stdout))
     if ((parseInt(stdout) === 0) !== on) {
       on ? exec('caffeinate -u -t 1') : exec('pmset displaysleepnow');
     }
-    next();    
+    next();
   });
 }
