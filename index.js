@@ -43,7 +43,7 @@ macDisplay.prototype.getSwitchOnCharacteristic = function(next) {
 macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
   this.log('Setting mac display: ' + (on ? 'on' : 'off'));
 
-  exec("pmset -g", (err, stdout, stderr) => {
+  exec("system_profiler SPDisplaysDataType", (err, stdout, stderr) => {
     console.log(stdout)
   })
 
