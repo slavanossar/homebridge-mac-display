@@ -51,3 +51,6 @@ macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
     next();
   });
 }
+
+// Poll status of device
+setInterval(function () { macDisplay.getCharacteristic(Characteristic.On).getValue() }, 1000)
