@@ -27,6 +27,9 @@ macDisplay.prototype.getServices = function() {
     .on('set', this.setSwitchOnCharacteristic.bind(this))
     .on('get', this.getSwitchOnCharacteristic.bind(this));
 
+  // Poll status of device
+  setInterval(function () { switchService.getCharacteristic(Characteristic.On).getValue() }, 1000)
+
   this.informationService = informationService;
   this.switchService = switchService;
   return [informationService, switchService];
@@ -51,6 +54,3 @@ macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
     next();
   });
 }
-
-// Poll status of device
-setInterval(function () { macDisplay.getCharacteristic(Characteristic.On).getValue() }, 1000)
