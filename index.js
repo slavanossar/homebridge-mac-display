@@ -35,6 +35,7 @@ macDisplay.prototype.getServices = function() {
 // Returns proper state of display
 macDisplay.prototype.getSwitchOnCharacteristic = function(next) {
   exec("system_profiler SPDisplaysDataType | grep -m 1 \"Display Asleep\" | awk '{print $2}'", (err, stdout, stderr) => {
+    console.log(stdout)
     next(null, stdout.includes('Yes'));
   });
 }
@@ -45,6 +46,7 @@ macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
 
   // Check current status
   exec("system_profiler SPDisplaysDataType | grep -m 1 \"Display Asleep\" | awk '{print $2}'", (err, stdout, stderr) => {
+    console.log(stdout, on)
     if ((stdout.includes('Yes')) !== on) {
       on ? exec('caffeinate -u -t 1') : exec('pmset displaysleepnow');
     }
