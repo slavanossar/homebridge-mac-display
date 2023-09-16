@@ -34,8 +34,8 @@ macDisplay.prototype.getServices = function() {
 
 // Returns proper state of display
 macDisplay.prototype.getSwitchOnCharacteristic = function(next) {
-  exec('pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29', (err, stdout, stderr) => {
-    next(null, parseInt(stdout) >= 4);
+  exec("pmset -g | grep \" sleep \" | awk '{print $2}'", (err, stdout, stderr) => {
+    next(null, parseInt(stdout) === 1);
   });
 }
 
@@ -45,7 +45,7 @@ macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
 
   // Check current status
   exec('pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29', (err, stdout, stderr) => {
-    if ((parseInt(stdout) >= 4) !== on) {
+    if ((parseInt(stdout) === 1) !== on) {
       on ? exec('caffeinate -u -t 1') : exec('pmset displaysleepnow');
     }
     next();    
