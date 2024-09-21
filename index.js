@@ -28,7 +28,7 @@ macDisplay.prototype.getServices = function() {
     .on('get', this.getSwitchOnCharacteristic.bind(this));
 
   // Poll status of device
-  setInterval(function () { switchService.getCharacteristic(Characteristic.On).getValue() }, 1000)
+  setInterval(function () { switchService.getCharacteristic(Characteristic.On).getValue() }, 3000)
 
   this.informationService = informationService;
   this.switchService = switchService;
