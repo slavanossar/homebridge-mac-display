@@ -6,15 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Chris Anselmo <christopherwk210@gmail.com>",
+  "author": "Slava Nossar",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/christopherwk210/homebridge-mac-display.git"
-  },
-  "bugs": {
-    "url": "https://github.com/christopherwk210/homebridge-mac-display/issues",
-    "email": "christopherwk210@gmail.com"
+    "url": "git://github.com/slavanossar/homebridge-mac-display.git"
   },
   "engines": {
     "node": ">=6.0.0",
