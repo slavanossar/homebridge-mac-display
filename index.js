@@ -17,7 +17,7 @@ function macDisplay(log, config) {
 macDisplay.prototype.getServices = function() {
   let informationService = new Service.AccessoryInformation();
   informationService
-    .setCharacteristic(Characteristic.Manufacturer, "christopherwk210")
+    .setCharacteristic(Characteristic.Manufacturer, "slavanossar")
     .setCharacteristic(Characteristic.Model, "DisplaySwitch")
     .setCharacteristic(Characteristic.SerialNumber, package.version);
 
