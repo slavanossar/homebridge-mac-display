@@ -52,11 +52,10 @@ function isStudioDisplayAsleep(callback) {
     const parsedData = parseSystemProfilerOutput(stdout)
 
     // Locate "Studio Display" and check if it's asleep
-    const displays = parsedData['Graphics/Displays']['Displays']
+    const displays = parsedData['Graphics/Displays']['Apple M2 Pro']['Displays']
 
     if (displays) {
       for (const displayName in displays) {
-        console.log(displayName)
         if (displayName === 'Studio Display') {
           return callback(
             displays[displayName]['Display Asleep'] === 'Yes',
@@ -65,8 +64,6 @@ function isStudioDisplayAsleep(callback) {
         }
       }
     }
-
-    console.log(displays)
 
     callback(false, null) // Default to off if not found
   })
