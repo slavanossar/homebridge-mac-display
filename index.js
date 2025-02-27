@@ -52,10 +52,11 @@ function isStudioDisplayAsleep(callback) {
     const parsedData = parseSystemProfilerOutput(stdout)
 
     // Locate "Studio Display" and check if it's asleep
-    const displays = parsedData['Graphics/Displays']
+    const displays = parsedData['Graphics/Displays']['Displays']
+
     if (displays) {
       for (const displayName in displays) {
-        if (displayName.startsWith('Studio Display')) {
+        if (displayName === 'Studio Display') {
           return callback(
             displays[displayName]['Display Asleep'] === 'Yes',
             null,
@@ -63,8 +64,6 @@ function isStudioDisplayAsleep(callback) {
         }
       }
     }
-
-    console.log(parsedData)
 
     callback(false, null) // Default to off if not found
   })
