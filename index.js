@@ -57,8 +57,8 @@ function isStudioDisplayAsleep(callback) {
       for (const displayName in displays) {
         if (displayName.startsWith('Studio Display')) {
           return callback(
-            null,
             displays[displayName]['Display Asleep'] === 'Yes',
+            null,
           )
         }
       }
