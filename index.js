@@ -64,6 +64,8 @@ function isStudioDisplayAsleep(callback) {
       }
     }
 
+    console.log(parsedData)
+
     callback(false, null) // Default to off if not found
   })
 }
